@@ -22,8 +22,6 @@ class ViewController: UIViewController {
         let endRange = string.range(of: "<", options: .backwards, range: range1, locale: Locale(identifier: "<"))
         let endIndex = endRange!.lowerBound
         
-        
-        
         let searchRange = Range(uncheckedBounds: (startIndex, endIndex))
         
         let endString = string.substring(with: searchRange)
@@ -36,6 +34,20 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    /// 搜寻需要的字符索引
+    func search(needString: Character, inString: String) -> [Int] {
+        var index = 0
+        var needIndex = [Int]()
+        
+        for value in inString.characters {
+            if value == needString {
+                needIndex.append(index)
+            }
+            index += 1
+        }
+        
+        return needIndex
+    }
 
 }
 
